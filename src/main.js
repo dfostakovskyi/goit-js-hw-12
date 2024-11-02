@@ -7,9 +7,10 @@ import { createGallery } from './js/render-functions'
 
 const form = document.querySelector(".input-forme");
 const container = document.querySelector(".gallery");
-const loader = document.querySelector(".loader");
 
 form.addEventListener("submit", handleSubmit);
+
+let currentPage = 1;
 
 function handleSubmit(event) {
     event.preventDefault();
@@ -24,17 +25,11 @@ function handleSubmit(event) {
         return;
     }
 
-    
-    loader.style.display = 'block';
-    
-    
+    // Очищення контейнера галереї перед новим пошуком
     container.innerHTML = '';
 
-    fetchData(userInput.toLowerCase())
+    fetchData(userInput.toLowerCase(), currentPage, 200)
         .then(data => {
-            
-            loader.style.display = 'none';
-            
             console.log('API Response:', data);
             if (data.totalHits > 0) {
                 container.insertAdjacentHTML("beforeend", createGallery(data.hits));
@@ -43,7 +38,7 @@ function handleSubmit(event) {
                     captionsData: 'alt',
                     captionDelay: 250,
                 });
-                lightbox.refresh(); 
+                lightbox.refresh(); // Оновлення lightbox після додавання нових елементів
                 
             } else {
                 iziToast.info({
@@ -53,9 +48,6 @@ function handleSubmit(event) {
             }
         })
         .catch(error => {
-            
-            loader.style.display = 'none';
-            
             iziToast.error({
                 title: 'Error',
                 message: 'Error fetching data',
@@ -63,6 +55,6 @@ function handleSubmit(event) {
             console.error('Error fetching data:', error);
         });
 
-    
+    // Очищення текстового поля запиту
     document.querySelector('#input-user').value = '';
 }
