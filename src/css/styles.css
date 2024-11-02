@@ -16,3 +16,144 @@
 @import url('./badges.css');
 @import url('./back-link.css');
 @import url('./footer.css');
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+}
+
+.input-forme {
+  width: 371px;
+  height: 40px;
+  display: flex;
+  gap: 8px;
+  padding: 0;
+  justify-content: center;
+  align-items: center; /* Вирівнювання по вертикалі */
+}
+
+.input-forme .input,
+.input-forme .form-btn {
+  box-sizing: border-box; /* Забезпечує врахування padding і border */
+}
+
+.input-forme .input {
+  border-radius: 4px;
+  border: 1px solid #808080;
+  width: 272px;
+  height: 40px;
+  padding: 0 8px; /* Додаємо padding всередині поля вводу */
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: #808080;
+}
+
+.input-forme .input:hover {
+  border: 1px solid #000;
+}
+
+.input-forme .input:focus {
+  border: 1px solid #4e75ff;
+  outline: none;
+}
+
+.input-forme .form-btn {
+  border-radius: 8px;
+  border: none;
+  padding: 8px 16px;
+  width: 91px;
+  height: 40px;
+  background: #4e75ff;
+  font-family: 'Montserrat', sans-serif; /* Виправлено */
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: #fff;
+}
+
+.input-forme .form-btn:hover {
+  background-color: #6c8cff;
+}
+main {
+  width: 1200px;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+}
+
+.gallery_item {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #808080;
+  width: 360px;
+  height: 248px;
+  position: relative;
+}
+
+img {
+  width: 100%;
+  height: 200px;
+  position: relative;
+}
+
+.gallery_data {
+  width: 100%;
+  height: 48px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: #fff;
+}
+
+.gallery_item table {
+  width: 100%;
+  height: 40px;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+.gallery_item th,
+.gallery_item td {
+  text-align: center;
+  width: 25%;
+  background-color: #fff;
+}
+
+.gallery_item th {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 1.33333;
+  letter-spacing: 0.04em;
+  color: #2e2f42;
+}
+
+.gallery_item td {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: #2e2f42;
+}
