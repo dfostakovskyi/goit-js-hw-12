@@ -25,7 +25,7 @@ function handleSubmit(event) {
         return;
     }
 
-    // Очищення контейнера галереї перед новим пошуком
+    
     container.innerHTML = '';
 
     fetchData(userInput.toLowerCase(), currentPage, 200)
@@ -38,7 +38,7 @@ function handleSubmit(event) {
                     captionsData: 'alt',
                     captionDelay: 250,
                 });
-                lightbox.refresh(); // Оновлення lightbox після додавання нових елементів
+                lightbox.refresh(); 
                 
             } else {
                 iziToast.info({
@@ -55,6 +55,6 @@ function handleSubmit(event) {
             console.error('Error fetching data:', error);
         });
 
-    // Очищення текстового поля запиту
+    
     document.querySelector('#input-user').value = '';
 }
