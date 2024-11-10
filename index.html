@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>goit-js-hw-11</title>
     <script type="module" crossorigin src="/goit-js-hw-12/index.js"></script>
-    <link rel="modulepreload" crossorigin href="/goit-js-hw-12/assets/vendor-5ObWk2rO.js">
+    <link rel="modulepreload" crossorigin href="/goit-js-hw-12/assets/vendor-D73Uttp0.js">
     <link rel="stylesheet" crossorigin href="/goit-js-hw-12/assets/vendor-DumFYO8Z.css">
-    <link rel="stylesheet" crossorigin href="/goit-js-hw-12/assets/index-DUdfbezE.css">
+    <link rel="stylesheet" crossorigin href="/goit-js-hw-12/assets/index-Ej9qQpwN.css">
   </head>
   <body>
     <header class="header">
@@ -24,9 +24,18 @@
           Search
         </button>
       </form>
-      <div class="loader"></div>
     </header>
-    <main><ul class="gallery"></ul></main>
+    <main>
+      <ul class="gallery"></ul>
+      <div class="invisible div-btn-load" id="div-load-btn">
+        <button type="submit" class="load-btn" id="load-btn">Load more</button>
+      </div>
 
+      <div class="line-loader invisible"></div>
+
+      <p id="end-message" class="end-message invisible">
+        We're sorry, but you've reached the end of search results.
+      </p>
+    </main>
   </body>
 </html>
