@@ -21,10 +21,19 @@
           Search
         </button>
       </form>
-      <div class="loader"></div>
     </header>
-    <main><ul class="gallery"></ul></main>
+    <main>
+      <ul class="gallery"></ul>
+      <div class="invisible div-btn-load" id="div-load-btn">
+        <button type="submit" class="load-btn" id="load-btn">Load more</button>
+      </div>
 
+      <div class="line-loader invisible"></div>
+
+      <p id="end-message" class="end-message invisible">
+        We're sorry, but you've reached the end of search results.
+      </p>
+    </main>
     <script type="module" src="./main.js"></script>
   </body>
 </html>

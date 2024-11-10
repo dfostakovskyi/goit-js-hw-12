@@ -1,8 +1,10 @@
+import axios from 'axios';
+
 const API_KEY = '46850539-7e4ca2d811908faae801b6294';
 const baseURL = "https://pixabay.com/api/";
 
-export function fetchData(userInput, page = 1, per_page = 200) { 
-  const params = new URLSearchParams({
+export async function fetchData(userInput, page = 1, per_page = 15) { 
+  const params = {
     key: API_KEY,
     q: userInput,
     image_type: 'photo',
@@ -10,16 +12,14 @@ export function fetchData(userInput, page = 1, per_page = 200) {
     safesearch: 'true',
     page,
     per_page
-  });
+  };
 
-  const url = `${baseURL}?${params.toString()}`;
+  const url = `${baseURL}`;
 
-  return fetch(url)
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(response.statusText);
-      }
-      return response.json();
-    });
+  try {
+    const response = await axios.get(url, { params });
+    return response.data;
+  } catch (error) {
+    throw new Error(error.response ? error.response.statusText : error.message);
+  }
 }
-
