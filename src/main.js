@@ -8,15 +8,22 @@ import { createGallery } from './js/render-functions';
 const form = document.querySelector(".input-forme");
 const container = document.querySelector(".gallery");
 const loadMoreBtn = document.querySelector("#div-load-btn");
+const loadMoreButton = document.querySelector('#load-btn');
 const lineLoader = document.querySelector(".line-loader");
 const endMessage = document.querySelector("#end-message");
 
 form.addEventListener("submit", handleSubmit);
-document.querySelector('#load-btn').addEventListener('click', handleLoadMore);
+loadMoreButton.addEventListener('click', handleLoadMore);
 
 let currentPage = 1;
 let totalHits = 0;
 let userInput = '';
+
+
+const lightbox = new SimpleLightbox('.gallery a', {
+    captionsData: 'alt',
+    captionDelay: 250,
+});
 
 async function handleSubmit(event) {
     event.preventDefault();
@@ -37,7 +44,7 @@ async function handleSubmit(event) {
     loadMoreBtn.classList.add('invisible');
 
     try {
-        lineLoader.classList.remove('invisible');
+        lineLoader.classList.remove('invisible'); 
 
         const data = await fetchData(userInput.toLowerCase(), currentPage, 15);
         console.log('API Response:', data);
@@ -45,10 +52,7 @@ async function handleSubmit(event) {
         if (totalHits > 0) {
             container.insertAdjacentHTML("beforeend", createGallery(data.hits));
             
-            const lightbox = new SimpleLightbox('.gallery a', {
-                captionsData: 'alt',
-                captionDelay: 250,
-            });
+            
             lightbox.refresh();
 
             if (totalHits > 15) {
@@ -69,7 +73,7 @@ async function handleSubmit(event) {
         console.error('Error fetching data:', error);
         
     } finally {
-        lineLoader.classList.add('invisible');
+        lineLoader.classList.add('invisible'); 
     }
 
     document.querySelector('#input-user').value = '';
@@ -79,16 +83,12 @@ async function handleLoadMore() {
     currentPage++;
 
     try {
-        lineLoader.classList.remove('invisible');
+        lineLoader.classList.remove('invisible'); 
 
         const data = await fetchData(userInput.toLowerCase(), currentPage, 15);
         console.log('API Response:', data);
         container.insertAdjacentHTML("beforeend", createGallery(data.hits));
-
-        const lightbox = new SimpleLightbox('.gallery a', {
-            captionsData: 'alt',
-            captionDelay: 250,
-        });
+        
         lightbox.refresh();
 
         const galleryItem = document.querySelector(".gallery_item");
@@ -112,6 +112,6 @@ async function handleLoadMore() {
         console.error('Error fetching more data:', error);
         
     } finally {
-        lineLoader.classList.add('invisible');
+        lineLoader.classList.add('invisible'); 
     }
 }
