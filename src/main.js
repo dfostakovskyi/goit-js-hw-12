@@ -12,6 +12,8 @@ const loadMoreButton = document.querySelector('#load-btn');
 const lineLoader = document.querySelector(".line-loader");
 const endMessage = document.querySelector("#end-message");
 
+
+
 form.addEventListener("submit", handleSubmit);
 loadMoreButton.addEventListener('click', handleLoadMore);
 
